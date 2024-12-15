@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         targetPosition = transform.position;
+
         if (gridGame == null)
         {
             gridGame = GameObject.FindObjectOfType<GridManager>();
@@ -23,10 +24,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!isMoving)
-        {
-            HandleMovement();
-        }
+        HandleMovement();
     }
 
     void FixedUpdate()
@@ -36,6 +34,8 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
+        if (isMoving) return;
+
         Vector2Int newPosition = gridPosition;
 
         if (Input.GetKeyDown(KeyCode.W)) newPosition.y = gridGame.gridHeight - 1;
@@ -55,8 +55,8 @@ public class PlayerController : MonoBehaviour
     {
         if (isMoving)
         {
-            Vector2 moveDirection = (targetPosition - transform.position).normalized;
-            rb.linearVelocity = moveDirection * moveSpeed;
+            Vector2 direction = (targetPosition - transform.position).normalized;
+            rb.linearVelocity = direction * moveSpeed;
 
             if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
             {
@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
             isMoving = false;
             rb.linearVelocity = Vector2.zero;
             targetPosition = transform.position;
+            gridPosition = new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
         }
     }
 }
