@@ -287,7 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridWidth: 5
   gridHeight: 5
-  whiteTilePrefab: {fileID: 1600034114898671126, guid: dfe6b4a40fc3e994095ec9fe4955659c, type: 3}
+  whiteTilePrefab: {fileID: 874649917072921274, guid: 3450d17245ea8e94e85ead6d48854981, type: 3}
   blackTilePrefab: {fileID: 5830282256934213486, guid: d91af30496512ec4cad7c47f25a4c70c, type: 3}
   redTilePrefab: {fileID: 7198938585192463333, guid: 854462835bfdf3a4294f8defc868a01e, type: 3}
   playerPrefab: {fileID: 3230756081552472409, guid: a905ff2f312643b42bc7e6d66810c947, type: 3}

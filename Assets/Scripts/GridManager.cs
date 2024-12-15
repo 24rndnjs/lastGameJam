@@ -19,6 +19,12 @@ public class GridManager : MonoBehaviour
 
     void Start()
     {
+        if (gridParent == null)
+        {
+            Debug.LogError("Grid Parent is not assigned!");
+            return;
+        }
+
         GenerateGrid();
     }
 
