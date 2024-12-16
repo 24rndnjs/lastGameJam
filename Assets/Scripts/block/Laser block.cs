@@ -19,19 +19,14 @@ public class Laserblock : MonoBehaviour
         {
             foreach (Vector3 dir in directions)
             {
-                Vector3 rotation = dir;
-                Vector3 rotation1 = dir;
-                Vector3 rotation2 = dir;
-                Vector3 rotation3 = dir;
+                Vector3 rotation = directions[0];
+                Vector3 rotation1 = directions[1];
+                Vector3 rotation2 = directions[2];
+                Vector3 rotation3 = directions[3];
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, rayLength, layerMask);
                 if (hit.collider != null)
                 {
-                    // 충돌 지점까지 선을 그림 (레이캐스트의 시각적 확인)
-                    Debug.DrawLine(transform.position, transform.position + dir * rayLength, new Color(1, 0, 0), 0.1f);
-                    // 충돌한 오브젝트의 이름을 로그로 출력
-                    Debug.Log("Hit " + hit.collider.name + " at " + dir);
-
-                    if (hit.collider.name == "TargetBlock")
+                     if (hit.collider.name == "TargetBlock")
                     {
                         Debug.Log("yjayuuiay");
                         rotation = Quaternion.Euler(0, 0, 45) * directions[0];  // 방향을 45도 회전
@@ -48,20 +43,28 @@ public class Laserblock : MonoBehaviour
                             Debug.DrawLine(transform.position, transform.position + rotation * rayLength, new Color(1, 0, 0), 0.1f);
                             Debug.Log("Re-Hit " + hit.collider.name + " at " + rotation);      
                             
-                            Debug.DrawLine(transform.position, transform.position + rotation * rayLength, new Color(1, 0, 0), 0.1f);
-                            Debug.Log("Re-Hit " + hit.collider.name + " at " + rotation);
+                            Debug.DrawLine(transform.position, transform.position + rotation1 * rayLength, new Color(1, 0, 0), 0.1f);
+                            Debug.Log("Re-Hit " + hit.collider.name + " at " + rotation1);
 
-                            Debug.DrawLine(transform.position, transform.position + rotation * rayLength, new Color(1, 0, 0), 0.1f);
-                            Debug.Log("Re-Hit " + hit.collider.name + " at " + rotation);     
+                            Debug.DrawLine(transform.position, transform.position + rotation2 * rayLength, new Color(1, 0, 0), 0.1f);
+                            Debug.Log("Re-Hit " + hit.collider.name + " at " + rotation2);     
                             
-                            Debug.DrawLine(transform.position, transform.position + rotation * rayLength, new Color(1, 0, 0), 0.1f);
-                            Debug.Log("Re-Hit " + hit.collider.name + " at " + rotation);
+                            Debug.DrawLine(transform.position, transform.position + rotation3 * rayLength, new Color(1, 0, 0), 0.1f);
+                            Debug.Log("Re-Hit " + hit.collider.name + " at " + rotation3);
                         }
+                        break;
                     }
 
+                    // 충돌 지점까지 선을 그림 (레이캐스트의 시각적 확인)
+                    Debug.DrawLine(transform.position, transform.position + dir * rayLength, new Color(1, 0, 0), 0.1f);
+                    // 충돌한 오브젝트의 이름을 로그로 출력
+                    Debug.Log("Hit " + hit.collider.name + " at " + dir);
                 }
+
+
             }
         }
+
 
     }
 }
