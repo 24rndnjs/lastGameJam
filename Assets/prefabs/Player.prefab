@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbacfdd705e041948b171ed12d091f8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridPosition: {x: 1, y: 1}
+  gridPosition: {x: 0, y: 0}
   gridGame: {fileID: 0}
   moveSpeed: 5
 --- !u!50 &5403066948619073499

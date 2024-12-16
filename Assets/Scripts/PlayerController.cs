@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Vector2Int gridPosition;
-    public GridManager gridGame;
     public float moveSpeed = 5f;
 
     private Vector3 targetPosition;
@@ -13,11 +11,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         targetPosition = transform.position;
-        if (gridGame == null)
-        {
-            gridGame = GameObject.FindObjectOfType<GridManager>();
-        }
-
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -36,17 +29,16 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        Vector2Int newPosition = gridPosition;
+        Vector3 direction = Vector3.zero;
 
-        if (Input.GetKeyDown(KeyCode.W)) newPosition.y = gridGame.gridHeight - 1;
-        if (Input.GetKeyDown(KeyCode.S)) newPosition.y = 0;
-        if (Input.GetKeyDown(KeyCode.A)) newPosition.x = 0;
-        if (Input.GetKeyDown(KeyCode.D)) newPosition.x = gridGame.gridWidth - 1;
+        if (Input.GetKeyDown(KeyCode.W)) direction = Vector3.up;
+        if (Input.GetKeyDown(KeyCode.S)) direction = Vector3.down;
+        if (Input.GetKeyDown(KeyCode.A)) direction = Vector3.left;
+        if (Input.GetKeyDown(KeyCode.D)) direction = Vector3.right;
 
-        if (gridGame.IsValidMove(newPosition))
+        if (direction != Vector3.zero)
         {
-            gridPosition = newPosition;
-            targetPosition = new Vector3(gridPosition.x, gridPosition.y, 0);
+            targetPosition = transform.position + direction;
             isMoving = true;
         }
     }
