@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    [SerializeField] public int gridWidth = 5, gridHeight = 5;
+    public int gridWidth = 5, gridHeight = 5;
     [SerializeField] public GameObject whiteTilePrefab;
     [SerializeField] public GameObject blackTilePrefab;
     [SerializeField] public GameObject redTilePrefab;
