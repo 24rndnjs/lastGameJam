@@ -46,6 +46,20 @@ public class Laserblock : MonoBehaviour
                         Debug.Log("Found TragetBlock2, resetting rotation.");
                         shouldRotate = false;  // 두 번째 블록에 충돌 시 회전 리셋
                     }
+                    else if (hit.collider.CompareTag("Clear"))
+                    {
+                        // "Clear" 태그를 가진 블록의 콜라이더 비활성화 및 블록 개수 감소
+                        hit.collider.enabled = false;
+                        clearBlockCount--;
+                        Debug.Log("Clear block hit. Remaining blocks: " + clearBlockCount);
+
+                        // 모든 블록이 제거되었다면 클리어 화면 표시
+                        if (clearBlockCount <= 0)
+                        {
+                            Debug.Log("All clear blocks removed. Level cleared!");
+                            // 클리어 화면 로직을 여기에 구현 (예: 씬 전환, UI 업데이트 등)
+                        }
+                    }
                     else if (hit.collider.name == "Power")
                     {
                         Collider2D collider = g.GetComponent<Collider2D>();
