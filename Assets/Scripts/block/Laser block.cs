@@ -4,7 +4,7 @@ using System;
 public class Laserblock : MonoBehaviour
 {
     public bool shouldRotate = false;
-    public GameObject g;
+    public GameObject[] g;
     private int clearBlockCount; // 클리어 블록 개수를 저장할 변수
     void Awake()
     {
@@ -62,10 +62,13 @@ public class Laserblock : MonoBehaviour
                     }
                     else if (hit.collider.name == "Power")
                     {
-                        Collider2D collider = g.GetComponent<Collider2D>();
-                        if (collider != null)
+                        foreach (GameObject obj in g)
                         {
-                            collider.isTrigger = !collider.isTrigger;
+                            Collider2D collider = obj.GetComponent<Collider2D>();
+                            if (collider != null)
+                            {
+                                collider.isTrigger = !collider.isTrigger;
+                            }
                         }
                     }
                 }
