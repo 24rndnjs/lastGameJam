@@ -40,10 +40,42 @@ public class PlayerController : MonoBehaviour
     {
         Vector2Int newPosition = gridPosition;
 
-        if (Input.GetKeyDown(KeyCode.W)) newPosition.y = gridGame.gridHeight - 1;
-        if (Input.GetKeyDown(KeyCode.S)) newPosition.y = 0;
-        if (Input.GetKeyDown(KeyCode.A)) newPosition.x = 0;
-        if (Input.GetKeyDown(KeyCode.D)) newPosition.x = gridGame.gridWidth - 1;
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            for (int y = gridPosition.y + 1; y < gridGame.gridHeight; y++)
+            {
+                if (!gridGame.IsValidMove(new Vector2Int(gridPosition.x, y)))
+                    break;
+                newPosition.y = y;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            for (int y = gridPosition.y - 1; y >= 0; y--)
+            {
+                if (!gridGame.IsValidMove(new Vector2Int(gridPosition.x, y)))
+                    break;
+                newPosition.y = y;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            for (int x = gridPosition.x - 1; x >= 0; x--)
+            {
+                if (!gridGame.IsValidMove(new Vector2Int(x, gridPosition.y)))
+                    break;
+                newPosition.x = x;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            for (int x = gridPosition.x + 1; x < gridGame.gridWidth; x++)
+            {
+                if (!gridGame.IsValidMove(new Vector2Int(x, gridPosition.y)))
+                    break;
+                newPosition.x = x;
+            }
+        }
 
         if (gridGame.IsValidMove(newPosition))
         {
@@ -78,7 +110,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             isMoving = false;
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;//ss
             targetPosition = transform.position;
         }
     }
