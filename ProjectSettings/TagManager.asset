@@ -10,6 +10,7 @@ TagManager:
   - TargetBlock
   - TragetBlock2
   - Power
+  - Clear
   layers:
   - Default
   - TransparentFX

@@ -5,14 +5,15 @@ public class Laserblock : MonoBehaviour
 {
     public bool shouldRotate = false;
     public GameObject g;
-
-    public float speed = 5.0f;  // 이동 속도
+    private int clearBlockCount; // 클리어 블록 개수를 저장할 변수
+    void Awake()
+    {
+        // "Clear" 태그를 가진 모든 게임 오브젝트를 찾아서 그 개수를 셈
+        clearBlockCount = GameObject.FindGameObjectsWithTag("Clear").Length;
+        Debug.Log("Total clear blocks: " + clearBlockCount);
+    }
     void Update()
     {
-        float moveX = Input.GetAxis("Horizontal") * speed * Time.deltaTime; // A와 D 키, 좌우 화살표에 반응
-        float moveZ = Input.GetAxis("Vertical") * speed * Time.deltaTime;   // W와 S 키, 상하 화살표에 반응
-        transform.Translate(moveX, moveZ, 0);
-
         float rayLength = 5.0f;  // 레이캐스트의 길이
         int layerMask = LayerMask.GetMask("sss");  // 레이캐스트가 반응할 레이어 마스크
 

@@ -689,7 +689,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldRotate: 0
   g: {fileID: 426959757}
-  speed: 5
 --- !u!50 &486666185
 Rigidbody2D:
   serializedVersion: 5
@@ -1521,7 +1520,7 @@ GameObject:
   - component: {fileID: 1623071421}
   - component: {fileID: 1623071420}
   m_Layer: 6
-  m_Name: block
+  m_Name: Clear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
