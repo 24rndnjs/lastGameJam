@@ -22,7 +22,10 @@ public class GameManager : MonoBehaviour
     Node[,] NodeArray;
     Node StartNode, TargetNode, CurNode;
     List<Node> OpenList, ClosedList;
-
+    private void Start()
+    {
+        PathFinding();
+    }
     public void PathFinding()
     {
         sizeX = topRight.x - bottomLeft.x + 1;
@@ -111,6 +114,7 @@ public class GameManager : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        Gizmos.color = Color.black;
         if (FinalNodeList.Count != 0) for (int i = 0; i < FinalNodeList.Count - 1; i++)
                 Gizmos.DrawLine(new Vector2(FinalNodeList[i].x, FinalNodeList[i].y), new Vector2(FinalNodeList[i + 1].x, FinalNodeList[i + 1].y));
     }

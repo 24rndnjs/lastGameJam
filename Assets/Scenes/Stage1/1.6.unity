@@ -119,6 +119,57 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &305743994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 305743996}
+  - component: {fileID: 305743995}
+  m_Layer: 0
+  m_Name: MYA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &305743995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305743994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b8f61c6559f8148be98d06d2a8f0b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bottomLeft: {x: 0, y: 0}
+  topRight: {x: 4, y: 4}
+  startPos: {x: 0, y: 4}
+  targetPos: {x: 2, y: 4}
+  FinalNodeList: []
+  allowDiagonal: 0
+  dontCrossCorner: 0
+--- !u!4 &305743996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305743994}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.5308466, y: 0.655985, z: 637.91113}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &633182432
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,8 +428,16 @@ MonoBehaviour:
   playerPrefab: {fileID: 3230756081552472409, guid: a905ff2f312643b42bc7e6d66810c947, type: 3}
   gridParent: {fileID: 860977931}
   playerStartPosition: {x: 0, y: 4}
-  wallPositions: []
-  redTilePositions: []
+  wallPositions:
+  - {x: 4, y: 2}
+  redTilePositions:
+  - {x: 0, y: 0}
+  - {x: 0, y: 2}
+  - {x: 1, y: 1}
+  - {x: 2, y: 1}
+  - {x: 2, y: 0}
+  - {x: 1, y: 3}
+  - {x: 3, y: 4}
   player: {fileID: 3230756081552472409, guid: a905ff2f312643b42bc7e6d66810c947, type: 3}
   playerPosition: {x: 0, y: 0}
 --- !u!4 &860977931
@@ -403,3 +462,4 @@ SceneRoots:
   - {fileID: 784901777}
   - {fileID: 633182434}
   - {fileID: 860977931}
+  - {fileID: 305743996}
