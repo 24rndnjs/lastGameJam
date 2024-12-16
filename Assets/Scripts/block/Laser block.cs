@@ -32,9 +32,9 @@ public class Laserblock : MonoBehaviour
             {
                 Vector3 checkDirection = shouldRotate ? Quaternion.Euler(0, 0, 45) * dir : dir;  // 조건에 따라 방향을 조절
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, checkDirection, rayLength, layerMask);
+                    Debug.DrawLine(transform.position, transform.position + checkDirection * rayLength, new Color(1, 0, 0), 0.1f);
                 if (hit.collider != null)
                 {
-                    Debug.DrawLine(transform.position, transform.position + checkDirection * rayLength, new Color(1, 0, 0), 0.1f);
                     Debug.Log("Hit " + hit.collider.name + " at " + checkDirection);
 
                     if (hit.collider.name == "TargetBlock" && !shouldRotate)
