@@ -31,5 +31,4 @@ public class ButtonManager : MonoBehaviour
     {
         SceneManager.LoadScene("Stage3Select");
     }
-
 }
