@@ -19,13 +19,46 @@ public class Laserblock : MonoBehaviour
         {
             foreach (Vector3 dir in directions)
             {
+                Vector3 rotation = dir;
+                Vector3 rotation1 = dir;
+                Vector3 rotation2 = dir;
+                Vector3 rotation3 = dir;
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, rayLength, layerMask);
                 if (hit.collider != null)
                 {
                     // 충돌 지점까지 선을 그림 (레이캐스트의 시각적 확인)
-                    Debug.DrawLine(transform.position, transform.position + dir * rayLength, new Color(1, 0, 0), 2f);
+                    Debug.DrawLine(transform.position, transform.position + dir * rayLength, new Color(1, 0, 0), 0.1f);
                     // 충돌한 오브젝트의 이름을 로그로 출력
                     Debug.Log("Hit " + hit.collider.name + " at " + dir);
+
+                    if (hit.collider.name == "TargetBlock")
+                    {
+                        Debug.Log("yjayuuiay");
+                        rotation = Quaternion.Euler(0, 0, 45) * directions[0];  // 방향을 45도 회전
+                        rotation1 = Quaternion.Euler(0, 0, 45) * directions[1];  // 방향을 45도 회전
+                        rotation2 = Quaternion.Euler(0, 0, 45) * directions[2];  // 방향을 45도 회전
+                        rotation3 = Quaternion.Euler(0, 0, 45) * directions[4];  // 방향을 45도 회전
+            
+                        hit = Physics2D.Raycast(transform.position, rotation, rayLength, layerMask);  // 새 방향으로 다시 레이캐스트 발사
+                        hit = Physics2D.Raycast(transform.position, rotation1, rayLength, layerMask);  // 새 방향으로 다시 레이캐스트 발사
+                        hit = Physics2D.Raycast(transform.position, rotation2, rayLength, layerMask);  // 새 방향으로 다시 레이캐스트 발사
+                        hit = Physics2D.Raycast(transform.position, rotation3, rayLength, layerMask);  // 새 방향으로 다시 레이캐스트 발사
+                        if (hit.collider != null)
+                        {
+                            Debug.DrawLine(transform.position, transform.position + rotation * rayLength, new Color(1, 0, 0), 0.1f);
+                            Debug.Log("Re-Hit " + hit.collider.name + " at " + rotation);      
+                            
+                            Debug.DrawLine(transform.position, transform.position + rotation * rayLength, new Color(1, 0, 0), 0.1f);
+                            Debug.Log("Re-Hit " + hit.collider.name + " at " + rotation);
+
+                            Debug.DrawLine(transform.position, transform.position + rotation * rayLength, new Color(1, 0, 0), 0.1f);
+                            Debug.Log("Re-Hit " + hit.collider.name + " at " + rotation);     
+                            
+                            Debug.DrawLine(transform.position, transform.position + rotation * rayLength, new Color(1, 0, 0), 0.1f);
+                            Debug.Log("Re-Hit " + hit.collider.name + " at " + rotation);
+                        }
+                    }
+
                 }
             }
         }

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Wall
+  - sss
+  - glass
+  - TargetBlock
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - UI
   - sss
   - 
-  - 
+  - thisisnotlayer
   - 
   - 
   - 
