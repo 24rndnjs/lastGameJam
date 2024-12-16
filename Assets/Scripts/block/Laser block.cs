@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Laserblock : MonoBehaviour
 {
@@ -57,6 +58,7 @@ public class Laserblock : MonoBehaviour
                         if (clearBlockCount <= 0)
                         {
                             Debug.Log("All clear blocks removed. Level cleared!");
+                            SceneManager.LoadScene("Clearscene");
                             // 클리어 화면 로직을 여기에 구현 (예: 씬 전환, UI 업데이트 등)
                         }
                     }
