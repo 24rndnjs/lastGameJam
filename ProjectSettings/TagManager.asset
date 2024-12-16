@@ -8,6 +8,8 @@ TagManager:
   - sss
   - glass
   - TargetBlock
+  - TragetBlock2
+  - Power
   layers:
   - Default
   - TransparentFX
