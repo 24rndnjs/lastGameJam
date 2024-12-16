@@ -83,6 +83,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage3/3.6.unity
     guid: bbe63935824274c49a3327d56f980de4
+  - enabled: 1
+    path: Assets/Scenes/Clearscene.unity
+    guid: a516fbf7415d4254ab3127f23f419a3e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
