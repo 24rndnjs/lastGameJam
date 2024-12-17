@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -7,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
 
     private Vector3 targetPosition;
-    public bool isMoving = false;
+    private bool isMoving = false;
     private Rigidbody2D rb;
 
     void Start()
@@ -25,10 +26,17 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!isMoving && rb.linearVelocity == Vector2.zero) // 움직임 중이 아닐 때만 이동 입력 처리
+        if (!isMoving)
         {
             HandleMovement();
         }
+        
+            if (!isMoving && rb.linearVelocity == Vector2.zero) // 움직임 중이 아닐 때만 이동 입력 처리
+            {
+                HandleMovement();
+            }
+        
+
     }
 
     void FixedUpdate()
@@ -107,15 +115,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-            if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Clear"))
-            {
-                isMoving = false;
-                rb.linearVelocity = Vector2.zero; // �̵� ���߱�
-                targetPosition = transform.position; // ���� ��ġ�� Ÿ�� �ʱ�ȭ
-                gridPosition = new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y)); // �׸��� ��ġ �缳��
-            }
-        
-
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Clear"))
+        {
+            isMoving = false;
+            rb.linearVelocity = Vector2.zero; // �̵� ���߱�
+            targetPosition = transform.position; // ���� ��ġ�� Ÿ�� �ʱ�ȭ
+            gridPosition = new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
+        }
     }
+
 }

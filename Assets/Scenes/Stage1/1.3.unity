@@ -150,10 +150,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridWidth: 4
   gridHeight: 3
-  whiteTilePrefab: {fileID: 874649917072921274, guid: 3450d17245ea8e94e85ead6d48854981, type: 3}
+  whiteTilePrefab: {fileID: 6903194329023562643, guid: 089fbd0f192acd5459f5a009cee6b4f6, type: 3}
   blackTilePrefab: {fileID: 5830282256934213486, guid: d91af30496512ec4cad7c47f25a4c70c, type: 3}
-  redTilePrefab: {fileID: 7198938585192463333, guid: 854462835bfdf3a4294f8defc868a01e, type: 3}
-  playerPrefab: {fileID: 3230756081552472409, guid: a905ff2f312643b42bc7e6d66810c947, type: 3}
+  redTilePrefab: {fileID: 2659826737830700560, guid: f6c4c8c819ef6a14eb97fba5011ea7da, type: 3}
+  playerPrefab: {fileID: 1566509643248402750, guid: 298837162d1ccb44884903501c99053a, type: 3}
   gridParent: {fileID: 155659473}
   playerStartPosition: {x: 0, y: 1}
   wallPositions:
@@ -178,8 +178,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155659471}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.49980238, y: -0.75146204, z: -4.7180305}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.4998026, y: -0.751462, z: -4.7180305}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

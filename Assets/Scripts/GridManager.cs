@@ -45,10 +45,12 @@ public class GridManager : MonoBehaviour
                 }
                 else if (Array.Exists(redTilePositions, pos => pos.x == x && pos.y == y))
                 {
+                    position.z = 50; // Z축을 50으로 고정
                     Instantiate(redTilePrefab, position, Quaternion.identity, gridParent);
                 }
                 else
                 {
+                    position.z = 50; // Z축을 50으로 고정
                     Instantiate(whiteTilePrefab, position, Quaternion.identity, gridParent);
                 }
             }
