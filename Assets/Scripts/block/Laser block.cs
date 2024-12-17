@@ -47,11 +47,11 @@ public class Laserblock : MonoBehaviour
                 {
                     Debug.Log("Hit " + hit.collider.name + " at " + checkDirection);
 
-                    if (hit.collider.name == "TargetBlock" && !shouldRotate)
+                    if (hit.collider.CompareTag("TargetBlock") && !shouldRotate)
                     {
                         shouldRotate = true;
                     }
-                    else if (hit.collider.name == "TargetBlock" && shouldRotate)
+                    else if (hit.collider.CompareTag ("TargetBlock") && shouldRotate)
                     {
                         Debug.Log("Found TragetBlock2, resetting rotation.");
                         shouldRotate = false;
