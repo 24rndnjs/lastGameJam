@@ -49,23 +49,23 @@ public class GridManager : MonoBehaviour
                 }
                 else if (Array.Exists(redTilePositions, pos => pos.x == x && pos.y == y))
                 {
-                    position.z = 50; // Z축을 50으로 고정
+                    position.z = 50; 
                     Instantiate(redTilePrefab, position, Quaternion.identity, gridParent);
                 }
                 else if (Array.Exists(glassTilePositions, pos => pos.x == x && pos.y == y))
                 {
-                    position.z = 50; // Z축을 50으로 고정
+                    position.z = 50; 
                     Instantiate(glassTilePrefab, position, Quaternion.identity, gridParent);
 
                 }
                 else if (Array.Exists(changeTilePositions, pos => pos.x == x && pos.y == y))
                 {
-                    position.z = 50; // Z축을 50으로 고정
+                    position.z = 50; 
                     Instantiate(changeTilePrefab, position, Quaternion.identity, gridParent);
                 }
                 else
                 {
-                    position.z = 50; // Z축을 50으로 고정
+                    position.z = 50; 
                     Instantiate(whiteTilePrefab, position, Quaternion.identity, gridParent);
                 }
             }

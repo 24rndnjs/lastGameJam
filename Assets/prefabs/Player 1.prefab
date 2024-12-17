@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5176561870058328912}
   - component: {fileID: 965091489902970600}
-  - component: {fileID: 8798377040077703943}
   - component: {fileID: -1466198167710353531}
   - component: {fileID: -1548120348485305979}
   - component: {fileID: 6594824376848903533}
@@ -91,21 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8798377040077703943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8100962408217860991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5306647b1fd74546b8d5505bc330ceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shouldRotate: 0
-  g:
-  - {fileID: 7198938585192463333, guid: 854462835bfdf3a4294f8defc868a01e, type: 3}
 --- !u!114 &-1466198167710353531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +105,9 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 0}
   gridGame: {fileID: 0}
   moveSpeed: 5
-  isMoving: 0
+  Image: {fileID: 0}
+  shouldRotate: 0
+  g: []
 --- !u!50 &-1548120348485305979
 Rigidbody2D:
   serializedVersion: 5

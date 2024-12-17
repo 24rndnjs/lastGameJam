@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +11,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 targetPosition;
     private bool isMoving = false;
     private Rigidbody2D rb;
+
+    public Sprite Image;
+    public bool shouldRotate = false;
+    public GameObject[] g;
+    private int clearBlockCount;
 
     void Start()
     {
@@ -22,6 +29,9 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
+
+        clearBlockCount = GameObject.FindGameObjectsWithTag("Clear").Length;
+        Debug.Log("Total clear blocks: " + clearBlockCount);
     }
 
     void Update()
@@ -29,6 +39,11 @@ public class PlayerController : MonoBehaviour
         if (!isMoving)
         {
             HandleMovement();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            FireLaser();
         }
     }
 
@@ -106,9 +121,78 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void FireLaser()
+    {
+        float rayLength = 5.0f;
+        int layerMask = LayerMask.GetMask("sss");
+        Vector3[] directions = { Vector3.down, Vector3.up, Vector3.left, Vector3.right };
+
+        foreach (Vector3 dir in directions)
+        {
+            Vector3 checkDirection = shouldRotate ? Quaternion.Euler(0, 0, 45) * dir : dir;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, checkDirection, rayLength, layerMask);
+            Vector3 endPosition = hit.collider ? new Vector3(hit.point.x, hit.point.y, 0) : transform.position + checkDirection * rayLength;
+
+            StartCoroutine(ShowRay(transform.position, endPosition));
+
+            if (hit.collider != null)
+            {
+                if (hit.collider.CompareTag("TargetBlock") && !shouldRotate)
+                {
+                    shouldRotate = true;
+                }
+                else if (hit.collider.CompareTag("TargetBlock") && shouldRotate)
+                {
+                    shouldRotate = false;
+                }
+                else if (hit.collider.CompareTag("Clear"))
+                {
+                    SpriteRenderer spriteRenderer = hit.collider.gameObject.GetComponent<SpriteRenderer>();
+                    if (spriteRenderer != null)
+                    {
+                        spriteRenderer.sprite = Image;
+                    }
+
+                    hit.collider.enabled = false;
+                    clearBlockCount--;
+
+                    if (clearBlockCount <= 0)
+                    {
+                        SceneManager.LoadScene("Clearscene");
+                    }
+                }
+                else if (hit.collider.name == "Power")
+                {
+                    foreach (GameObject obj in g)
+                    {
+                        Collider2D collider = obj.GetComponent<Collider2D>();
+                        if (collider != null)
+                        {
+                            collider.isTrigger = !collider.isTrigger;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    IEnumerator ShowRay(Vector3 start, Vector3 end)
+    {
+        LineRenderer lr = new GameObject("TemporaryLine").AddComponent<LineRenderer>();
+        lr.material = new Material(Shader.Find("Sprites/Default")) { color = Color.blue };
+        lr.startWidth = 0.05f;
+        lr.endWidth = 0.05f;
+        lr.SetPosition(0, start);
+        lr.SetPosition(1, end);
+        lr.enabled = true;
+
+        yield return new WaitForSeconds(0.1f);
+        Destroy(lr.gameObject);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Clear")||collision.gameObject.CompareTag("glass")||collision.gameObject.CompareTag("TargetBlock"))
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Clear") || collision.gameObject.CompareTag("glass") || collision.gameObject.CompareTag("TargetBlock"))
         {
             isMoving = false;
             rb.linearVelocity = Vector2.zero;
