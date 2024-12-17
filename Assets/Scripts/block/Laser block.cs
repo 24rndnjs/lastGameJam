@@ -84,7 +84,7 @@ public class Laserblock : MonoBehaviour
     IEnumerator ShowRay(Vector3 start, Vector3 end)
     {
         LineRenderer lr = new GameObject("TemporaryLine").AddComponent<LineRenderer>();
-        lr.material = new Material(Shader.Find("Sprites/Default")) { color = Color.red };
+        lr.material = new Material(Shader.Find("Sprites/Default")) { color = Color.blue };
         lr.startWidth = 0.05f;
         lr.endWidth = 0.05f;
         lr.SetPosition(0, start);
