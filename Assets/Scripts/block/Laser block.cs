@@ -10,7 +10,7 @@ public class Laserblock : MonoBehaviour
     public GameObject[] g;
     private int clearBlockCount;
     private LineRenderer lineRenderer;
-
+    public int Count = 0;
     void Awake()
     {
         clearBlockCount = GameObject.FindGameObjectsWithTag("Clear").Length;
@@ -31,10 +31,11 @@ public class Laserblock : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Count++;
             float rayLength = 5.0f;
             int layerMask = LayerMask.GetMask("sss");
             Vector3[] directions = { Vector3.down, Vector3.up, Vector3.left, Vector3.right };
-
+            
             foreach (Vector3 dir in directions)
             {
                 Vector3 checkDirection = shouldRotate ? Quaternion.Euler(0, 0, 45) * dir : dir;

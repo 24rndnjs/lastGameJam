@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
+    
     public int gridWidth = 5, gridHeight = 5;
     [SerializeField] public GameObject whiteTilePrefab;
     [SerializeField] public GameObject blackTilePrefab;
@@ -16,7 +17,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] public Vector2Int[] redTilePositions;
     [SerializeField] public Vector2Int[] glassTilePositions;
     [SerializeField] public Vector2Int[] changeTilePositions;
-
+    public int GuideClear = 0;
     public GameObject player;
     public Vector2Int playerPosition;
     private bool[,] wallGrid;

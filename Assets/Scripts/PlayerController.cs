@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     public GameObject[] g;
     private int clearBlockCount;
 
+    public int Count = 0;
+
+    
     void Start()
     {
         targetPosition = transform.position;
@@ -29,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
-
+       
         clearBlockCount = GameObject.FindGameObjectsWithTag("Clear").Length;
         Debug.Log("Total clear blocks: " + clearBlockCount);
     }
@@ -58,15 +61,18 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
+            Count++;
             for (int y = gridPosition.y + 1; y < gridGame.gridHeight; y++)
             {
                 if (!gridGame.IsValidMove(new Vector2Int(gridPosition.x, y)))
                     break;
                 newPosition.y = y;
             }
+            
         }
         if (Input.GetKey(KeyCode.S))
         {
+            Count++;
             for (int y = gridPosition.y - 1; y >= 0; y--)
             {
                 if (!gridGame.IsValidMove(new Vector2Int(gridPosition.x, y)))
@@ -76,6 +82,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
+            Count++;
             for (int x = gridPosition.x - 1; x >= 0; x--)
             {
                 if (!gridGame.IsValidMove(new Vector2Int(x, gridPosition.y)))
@@ -85,6 +92,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D))
         {
+            Count++;
             for (int x = gridPosition.x + 1; x < gridGame.gridWidth; x++)
             {
                 if (!gridGame.IsValidMove(new Vector2Int(x, gridPosition.y)))
@@ -126,7 +134,7 @@ public class PlayerController : MonoBehaviour
         float rayLength = 5.0f;
         int layerMask = LayerMask.GetMask("sss");
         Vector3[] directions = { Vector3.down, Vector3.up, Vector3.left, Vector3.right };
-
+        Count++;
         foreach (Vector3 dir in directions)
         {
             Vector3 checkDirection = shouldRotate ? Quaternion.Euler(0, 0, 45) * dir : dir;
@@ -158,7 +166,7 @@ public class PlayerController : MonoBehaviour
 
                     if (clearBlockCount <= 0)
                     {
-                        SceneManager.LoadScene("Clearscene");
+                        total();
                     }
                 }
                 else if (hit.collider.name == "Power")
@@ -197,6 +205,17 @@ public class PlayerController : MonoBehaviour
             isMoving = false;
             rb.linearVelocity = Vector2.zero;
             gridPosition = new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
+        }
+    }
+    public void total()
+    {
+        if(gridGame.GuideClear<=Count)
+        {
+            SceneManager.LoadScene("GuideClear");
+        }
+        else if(gridGame.GuideClear>Count)
+        {
+            SceneManager.LoadScene("Clearscene");
         }
     }
 }
