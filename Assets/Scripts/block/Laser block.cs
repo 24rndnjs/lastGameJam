@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Laserblock : MonoBehaviour
 {
+    public Sprite Image;
     public bool shouldRotate = false;
-    public bool change = false;
     public GameObject[] g;
     private int clearBlockCount;
     private LineRenderer lineRenderer;
@@ -58,7 +58,15 @@ public class Laserblock : MonoBehaviour
                     }
                     else if (hit.collider.CompareTag("Clear"))
                     {
-                        change = true;
+                        if (hit.collider != null && hit.collider.CompareTag("Clear")) // "Target"은 원하는 태그 이름
+                        {
+                            // 충돌한 오브젝트의 SpriteRenderer 컴포넌트를 찾고, 색상을 변경
+                            SpriteRenderer spriteRenderer = hit.collider.gameObject.GetComponent<SpriteRenderer>();
+                            if (spriteRenderer != null)
+                            {
+                                spriteRenderer.sprite = Image; // 스프라이트 변경
+                            }
+                        }
                         hit.collider.enabled = false;
                         clearBlockCount--;
 
