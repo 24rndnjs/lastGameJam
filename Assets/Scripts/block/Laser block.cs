@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Laserblock : MonoBehaviour
 {
     public bool shouldRotate = false;
+    public bool change = false;
     public GameObject[] g;
     private int clearBlockCount;
     private LineRenderer lineRenderer;
@@ -56,8 +58,10 @@ public class Laserblock : MonoBehaviour
                     }
                     else if (hit.collider.CompareTag("Clear"))
                     {
+                        change = true;
                         hit.collider.enabled = false;
                         clearBlockCount--;
+
                         Debug.Log("Clear block hit. Remaining blocks: " + clearBlockCount);
                         if (clearBlockCount <= 0)
                         {
