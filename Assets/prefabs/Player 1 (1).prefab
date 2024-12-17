@@ -65,6 +65,14 @@ PrefabInstance:
       value: Player 1 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8798377040077703943, guid: 0c5e1e29b54ced141ab651321dd76412, type: 3}
+      propertyPath: Image
+      value: 
+      objectReference: {fileID: 3952862052800249177, guid: 64533213afaef38408e4a6960d0a8d67, type: 3}
+    - target: {fileID: 8798377040077703943, guid: 0c5e1e29b54ced141ab651321dd76412, type: 3}
+      propertyPath: shouldRotate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798377040077703943, guid: 0c5e1e29b54ced141ab651321dd76412, type: 3}
       propertyPath: 'g.Array.data[0]'
       value: 
       objectReference: {fileID: 2659826737830700560, guid: f6c4c8c819ef6a14eb97fba5011ea7da, type: 3}

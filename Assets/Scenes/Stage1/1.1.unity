@@ -119,37 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &454013700
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 454013701}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &454013701
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 454013700}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5308466, y: 0.655985, z: 637.91113}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &784901774
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +289,7 @@ MonoBehaviour:
   gridHeight: 3
   whiteTilePrefab: {fileID: 6903194329023562643, guid: 089fbd0f192acd5459f5a009cee6b4f6, type: 3}
   blackTilePrefab: {fileID: 5830282256934213486, guid: d91af30496512ec4cad7c47f25a4c70c, type: 3}
-  redTilePrefab: {fileID: 2659826737830700560, guid: f6c4c8c819ef6a14eb97fba5011ea7da, type: 3}
+  redTilePrefab: {fileID: 6985817167004701246, guid: 854462835bfdf3a4294f8defc868a01e, type: 3}
   playerPrefab: {fileID: 1566509643248402750, guid: 298837162d1ccb44884903501c99053a, type: 3}
   gridParent: {fileID: 1139361874}
   playerStartPosition: {x: 0, y: 2}
@@ -533,4 +502,3 @@ SceneRoots:
   - {fileID: 1139361874}
   - {fileID: 1938181057}
   - {fileID: 1752097312}
-  - {fileID: 454013701}
