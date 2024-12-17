@@ -31,7 +31,6 @@ public class Laserblock : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Count++;
             float rayLength = 5.0f;
             int layerMask = LayerMask.GetMask("sss");
             Vector3[] directions = { Vector3.down, Vector3.up, Vector3.left, Vector3.right };
