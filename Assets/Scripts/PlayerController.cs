@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -22,6 +21,7 @@ public class PlayerController : MonoBehaviour
         }
 
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0;
     }
 
     void Update()
@@ -30,13 +30,6 @@ public class PlayerController : MonoBehaviour
         {
             HandleMovement();
         }
-        
-            if (!isMoving && rb.linearVelocity == Vector2.zero) // 움직임 중이 아닐 때만 이동 입력 처리
-            {
-                HandleMovement();
-            }
-        
-
     }
 
     void FixedUpdate()
@@ -48,7 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector2Int newPosition = gridPosition;
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             for (int y = gridPosition.y + 1; y < gridGame.gridHeight; y++)
             {
@@ -57,7 +50,7 @@ public class PlayerController : MonoBehaviour
                 newPosition.y = y;
             }
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
             for (int y = gridPosition.y - 1; y >= 0; y--)
             {
@@ -66,7 +59,7 @@ public class PlayerController : MonoBehaviour
                 newPosition.y = y;
             }
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             for (int x = gridPosition.x - 1; x >= 0; x--)
             {
@@ -75,7 +68,7 @@ public class PlayerController : MonoBehaviour
                 newPosition.x = x;
             }
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             for (int x = gridPosition.x + 1; x < gridGame.gridWidth; x++)
             {
@@ -118,10 +111,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Clear"))
         {
             isMoving = false;
-            rb.linearVelocity = Vector2.zero; // �̵� ���߱�
-            targetPosition = transform.position; // ���� ��ġ�� Ÿ�� �ʱ�ȭ
+            rb.linearVelocity = Vector2.zero;
             gridPosition = new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
         }
     }
-
 }
