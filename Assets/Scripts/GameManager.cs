@@ -22,10 +22,24 @@ public class GameManager : MonoBehaviour
     Node[,] NodeArray;
     Node StartNode, TargetNode, CurNode;
     List<Node> OpenList, ClosedList;
+
+    private LineRenderer lineRenderer;
+
     private void Start()
     {
+        // LineRenderer 설정
+        lineRenderer = gameObject.AddComponent<LineRenderer>();
+        lineRenderer.startWidth = 0.1f;
+        lineRenderer.endWidth = 0.1f;
+        lineRenderer.positionCount = 0;
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.startColor = Color.red;
+        lineRenderer.endColor = Color.red;
+
         PathFinding();
+        DrawPath(); // 경로 그리기
     }
+
     public void PathFinding()
     {
         sizeX = topRight.x - bottomLeft.x + 1;
@@ -70,8 +84,6 @@ public class GameManager : MonoBehaviour
                 }
                 FinalNodeList.Add(StartNode);
                 FinalNodeList.Reverse();
-
-                for (int i = 0; i < FinalNodeList.Count; i++) print(i + "번째는 " + FinalNodeList[i].x + ", " + FinalNodeList[i].y);
                 return;
             }
 
@@ -112,10 +124,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos()
+    void DrawPath()
     {
-        Gizmos.color = Color.black;
-        if (FinalNodeList.Count != 0) for (int i = 0; i < FinalNodeList.Count - 1; i++)
-                Gizmos.DrawLine(new Vector2(FinalNodeList[i].x, FinalNodeList[i].y), new Vector2(FinalNodeList[i + 1].x, FinalNodeList[i + 1].y));
+        if (FinalNodeList.Count > 0)
+        {
+            lineRenderer.positionCount = FinalNodeList.Count;
+            for (int i = 0; i < FinalNodeList.Count; i++)
+            {
+                lineRenderer.SetPosition(i, new Vector3(FinalNodeList[i].x, FinalNodeList[i].y, 0));
+            }
+        }
     }
 }

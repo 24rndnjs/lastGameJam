@@ -425,6 +425,8 @@ MonoBehaviour:
   whiteTilePrefab: {fileID: 6903194329023562643, guid: 089fbd0f192acd5459f5a009cee6b4f6, type: 3}
   blackTilePrefab: {fileID: 5830282256934213486, guid: d91af30496512ec4cad7c47f25a4c70c, type: 3}
   redTilePrefab: {fileID: 2659826737830700560, guid: f6c4c8c819ef6a14eb97fba5011ea7da, type: 3}
+  glassTilePrefab: {fileID: 1024691522539605071, guid: 231ba975472b80141b0ca5024fa9e609, type: 3}
+  changeTilePrefab: {fileID: 5750265198495711164, guid: eb633c8fafcd30049a49cf5d2c18646f, type: 3}
   playerPrefab: {fileID: 1566509643248402750, guid: 298837162d1ccb44884903501c99053a, type: 3}
   gridParent: {fileID: 860977931}
   playerStartPosition: {x: 0, y: 4}
@@ -438,6 +440,8 @@ MonoBehaviour:
   - {x: 2, y: 0}
   - {x: 1, y: 3}
   - {x: 3, y: 4}
+  glassTilePositions: []
+  changeTilePositions: []
   player: {fileID: 3230756081552472409, guid: a905ff2f312643b42bc7e6d66810c947, type: 3}
   playerPosition: {x: 0, y: 0}
 --- !u!4 &860977931

@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Clear"))
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Clear")||collision.gameObject.CompareTag("glass")||collision.gameObject.CompareTag("TargetBlock"))
         {
             isMoving = false;
             rb.linearVelocity = Vector2.zero;

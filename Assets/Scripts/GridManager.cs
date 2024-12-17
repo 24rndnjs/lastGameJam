@@ -7,11 +7,15 @@ public class GridManager : MonoBehaviour
     [SerializeField] public GameObject whiteTilePrefab;
     [SerializeField] public GameObject blackTilePrefab;
     [SerializeField] public GameObject redTilePrefab;
+    [SerializeField] public GameObject glassTilePrefab;
+    [SerializeField] public GameObject changeTilePrefab;
     [SerializeField] public GameObject playerPrefab;
     [SerializeField] public Transform gridParent;
     [SerializeField] public Vector2Int playerStartPosition = new Vector2Int(2, 2);
     [SerializeField] public Vector2Int[] wallPositions;
     [SerializeField] public Vector2Int[] redTilePositions;
+    [SerializeField] public Vector2Int[] glassTilePositions;
+    [SerializeField] public Vector2Int[] changeTilePositions;
 
     public GameObject player;
     public Vector2Int playerPosition;
@@ -47,6 +51,17 @@ public class GridManager : MonoBehaviour
                 {
                     position.z = 50; // Z축을 50으로 고정
                     Instantiate(redTilePrefab, position, Quaternion.identity, gridParent);
+                }
+                else if (Array.Exists(glassTilePositions, pos => pos.x == x && pos.y == y))
+                {
+                    position.z = 50; // Z축을 50으로 고정
+                    Instantiate(glassTilePrefab, position, Quaternion.identity, gridParent);
+
+                }
+                else if (Array.Exists(changeTilePositions, pos => pos.x == x && pos.y == y))
+                {
+                    position.z = 50; // Z축을 50으로 고정
+                    Instantiate(changeTilePrefab, position, Quaternion.identity, gridParent);
                 }
                 else
                 {
