@@ -172,7 +172,7 @@ MonoBehaviour:
   - {x: 3, y: 1}
   glassTilePositions: []
   changeTilePositions: []
-  GuideClear: 0
+  GuideClear: 4
   player: {fileID: 3230756081552472409, guid: a905ff2f312643b42bc7e6d66810c947, type: 3}
   playerPosition: {x: 0, y: 0}
 --- !u!4 &155659473
@@ -521,12 +521,24 @@ PrefabInstance:
       value: Backclear
       objectReference: {fileID: 0}
     - target: {fileID: 5101455652748456838, guid: ad575e50da34f7644b13f2e1e80d822e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 74.86514
+      objectReference: {fileID: 0}
+    - target: {fileID: 5101455652748456838, guid: ad575e50da34f7644b13f2e1e80d822e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50.398838
+      objectReference: {fileID: 0}
+    - target: {fileID: 5101455652748456838, guid: ad575e50da34f7644b13f2e1e80d822e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.8677
+      objectReference: {fileID: 0}
+    - target: {fileID: 5101455652748456838, guid: ad575e50da34f7644b13f2e1e80d822e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.12
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5101455652748456838, guid: ad575e50da34f7644b13f2e1e80d822e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.16
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5101455652748456838, guid: ad575e50da34f7644b13f2e1e80d822e, type: 3}
       propertyPath: m_LocalPosition.z
