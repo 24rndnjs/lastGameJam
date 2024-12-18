@@ -234,17 +234,6 @@ public class PlayerController : MonoBehaviour
 
     public void AddScore()
     {
-        if (s != null)
-        {
-            TextMeshProUGUI textComponent = s.GetComponent<TextMeshProUGUI>();
-            if (textComponent != null)
-            {
-                textComponent.SetText($"남은거: {Count}");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("TextMeshProUGUI is not assigned to 's'.");
-        }
+        
     }
 }
