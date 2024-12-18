@@ -17,6 +17,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] public Vector2Int[] redTilePositions;
     [SerializeField] public Vector2Int[] glassTilePositions;
     [SerializeField] public Vector2Int[] changeTilePositions;
+    
     public int GuideClear = 0;
     public GameObject player;
     public Vector2Int playerPosition;
@@ -29,7 +30,7 @@ public class GridManager : MonoBehaviour
             Debug.LogError("Grid Parent is not assigned!");
             return;
         }
-
+        
         GenerateGrid();
     }
 
@@ -90,4 +91,6 @@ public class GridManager : MonoBehaviour
 
         return true;
     }
+
+   
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,10 +17,10 @@ public class PlayerController : MonoBehaviour
     public bool shouldRotate = false;
     public GameObject[] g;
     private int clearBlockCount;
-    public bool shoot=true;
+    public bool shoot = true;
     public int Count = 0;
+    public GameObject s;
 
-    
     void Start()
     {
         targetPosition = transform.position;
@@ -32,14 +33,13 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
-       
+
         clearBlockCount = GameObject.FindGameObjectsWithTag("Clear").Length;
         Debug.Log("Total clear blocks: " + clearBlockCount);
     }
 
     void Update()
     {
-        
         if (!isMoving)
         {
             HandleMovement();
@@ -51,7 +51,6 @@ public class PlayerController : MonoBehaviour
                 FireLaser();
             }
         }
-        
     }
 
     void FixedUpdate()
@@ -63,6 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector2Int newPosition = gridPosition;
         shoot = true;
+
         if (Input.GetKey(KeyCode.W))
         {
             Count++;
@@ -73,7 +73,6 @@ public class PlayerController : MonoBehaviour
                 newPosition.y = y;
             }
             shoot = false;
-            
         }
         if (Input.GetKey(KeyCode.S))
         {
@@ -115,6 +114,8 @@ public class PlayerController : MonoBehaviour
             targetPosition = new Vector3(gridPosition.x, gridPosition.y, 0);
             isMoving = true;
         }
+
+        AddScore();
     }
 
     void MovePlayer()
@@ -142,7 +143,10 @@ public class PlayerController : MonoBehaviour
         float rayLength = 5.0f;
         int layerMask = LayerMask.GetMask("sss");
         Vector3[] directions = { Vector3.down, Vector3.up, Vector3.left, Vector3.right };
+
         Count++;
+        AddScore();
+
         foreach (Vector3 dir in directions)
         {
             Vector3 checkDirection = shouldRotate ? Quaternion.Euler(0, 0, 45) * dir : dir;
@@ -215,15 +219,32 @@ public class PlayerController : MonoBehaviour
             gridPosition = new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
         }
     }
+
     public void total()
     {
-        if(gridGame.GuideClear<=Count)
+        if (gridGame.GuideClear <= Count)
         {
             SceneManager.LoadScene("GuideClear");
         }
-        else if(gridGame.GuideClear>Count)
+        else if (gridGame.GuideClear > Count)
         {
             SceneManager.LoadScene("Clearscene");
+        }
+    }
+
+    public void AddScore()
+    {
+        if (s != null)
+        {
+            TextMeshProUGUI textComponent = s.GetComponent<TextMeshProUGUI>();
+            if (textComponent != null)
+            {
+                textComponent.SetText($"남은거: {Count}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("TextMeshProUGUI is not assigned to 's'.");
         }
     }
 }
