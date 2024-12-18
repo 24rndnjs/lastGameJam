@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public bool shouldRotate = false;
     public GameObject[] g;
     private int clearBlockCount;
-
+    public bool shoot=true;
     public int Count = 0;
 
     
@@ -39,15 +39,19 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        
         if (!isMoving)
         {
             HandleMovement();
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (shoot == true)
         {
-            FireLaser();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                FireLaser();
+            }
         }
+        
     }
 
     void FixedUpdate()
@@ -58,7 +62,7 @@ public class PlayerController : MonoBehaviour
     void HandleMovement()
     {
         Vector2Int newPosition = gridPosition;
-
+        shoot = true;
         if (Input.GetKey(KeyCode.W))
         {
             Count++;
@@ -68,6 +72,7 @@ public class PlayerController : MonoBehaviour
                     break;
                 newPosition.y = y;
             }
+            shoot = false;
             
         }
         if (Input.GetKey(KeyCode.S))
@@ -79,6 +84,7 @@ public class PlayerController : MonoBehaviour
                     break;
                 newPosition.y = y;
             }
+            shoot = false;
         }
         if (Input.GetKey(KeyCode.A))
         {
@@ -89,6 +95,7 @@ public class PlayerController : MonoBehaviour
                     break;
                 newPosition.x = x;
             }
+            shoot = false;
         }
         if (Input.GetKey(KeyCode.D))
         {
@@ -99,6 +106,7 @@ public class PlayerController : MonoBehaviour
                     break;
                 newPosition.x = x;
             }
+            shoot = false;
         }
 
         if (gridGame.IsValidMove(newPosition))
