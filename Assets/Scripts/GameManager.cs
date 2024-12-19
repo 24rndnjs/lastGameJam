@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+
 public class Node
 {
     public Node(bool _isWall, int _x, int _y) { isWall = _isWall; x = _x; y = _y; }
@@ -10,14 +11,16 @@ public class Node
     public Node ParentNode;
     public int x, y, G, H;
     public int F { get { return G + H; } }
-}
+  }
 
 public class GameManager : MonoBehaviour
 {
     public Vector2Int bottomLeft, topRight, startPos, targetPos;
     public List<Node> FinalNodeList;
     public bool allowDiagonal, dontCrossCorner;
-    
+    public bool lico = false;
+    public Setting set;
+
     int sizeX, sizeY;
     Node[,] NodeArray;
     Node StartNode, TargetNode, CurNode;
@@ -27,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // LineRenderer 설정
+        
         lineRenderer = gameObject.AddComponent<LineRenderer>();
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
@@ -35,11 +38,16 @@ public class GameManager : MonoBehaviour
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         lineRenderer.startColor = Color.red;
         lineRenderer.endColor = Color.red;
-
-        PathFinding();
-        DrawPath(); // 경로 그리기
+       
+            PathFinding();
+            DrawPath();
+        
     }
-
+  
+    public void Lico()
+    {
+       
+    }
     public void PathFinding()
     {
         sizeX = topRight.x - bottomLeft.x + 1;
